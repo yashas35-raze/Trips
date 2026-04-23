@@ -1,7 +1,8 @@
-
 const unsplash = (q) => `https://picsum.photos/seed/${q}${Math.floor(Math.random()*100)}/1200/800`;
-import gomateshModel from './assets/gomatesh.glb'; // or gomatesh3.glb
-import chaturmukhaModel from './assets/Chaturmukha2.glb';
+
+// ✅ REPLACED LOCAL FILES WITH GOOGLE DRIVE LINKS
+const gomateshModel = "https://drive.google.com/uc?export=download&id=1qZ3D6r3kLAg6iXyH0YXC_aDJTAVgmGx6";
+const chaturmukhaModel = "https://drive.google.com/uc?export=download&id=1J8S1raSb9CFbEhK5B83OSzU26RyxuWX4";
 
 export const placesData = [
   {
