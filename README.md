@@ -1,16 +1,127 @@
-# React + Vite
+# 🌍 TripVIEW — Coastal Karnataka Travel Guide
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A 3D-powered travel web application for discovering places, beaches, and hotels across Mangalore & Udupi.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Overview
 
-## React Compiler
+TripVIEW is a React-based travel guide that brings Coastal Karnataka to life through interactive 3D visualization, real-time maps, and a personalized favorites system. Users can explore curated destinations, get turn-by-turn directions, view 3D models of monuments, and save their favourite places — all backed by Firebase.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **3D Rotating Earth Hero** — Three.js powered globe with a 10,000-star particle field on the landing page
+- **Interactive Maps** — Leaflet + OpenStreetMap with place markers and image popups
+- **Turn-by-Turn Directions** — Live routing from the user's location using the OSRM API
+- **3D Monument Viewer** — Rotate and explore GLB models of Gomateshwara and Chaturmukha Basadi
+- **Search & Filter** — Real-time filtering by name, category (Places / Beaches / Hotels), and city
+- **Favorites System** — Save places to your profile with real-time Firestore sync across devices
+- **Authentication** — Email/password signup and login via Firebase Auth
+- **Responsive Design** — Mobile-first CSS Grid layout that adapts across all screen sizes
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend Framework | React 18 + Vite |
+| 3D Rendering | Three.js, @react-three/fiber, @react-three/drei |
+| Maps | Leaflet, OpenStreetMap |
+| Routing (Directions) | OSRM API |
+| Backend / Auth | Firebase Authentication |
+| Database | Cloud Firestore (real-time) |
+| Page Navigation | React Router DOM v6 |
+| Icons | React Icons |
+
+---
+
+## 📁 Project Structure
+trip/
+├── index.html
+├── vite.config.js
+├── public/
+│   └── images/             # Static place photos
+└── src/
+├── main.jsx            # App entry point
+├── App.jsx             # Routes + AuthProvider
+├── firebase.js         # Firebase config
+├── data.js             # Places, beaches, hotels data
+├── styles.css          # Global styles
+├── context/
+│   └── AuthContext.jsx
+├── components/
+│   ├── LandingPage.jsx
+│   ├── Landing3D.jsx       # Three.js Earth + starfield
+│   ├── AuthModal.jsx
+│   ├── MapView.jsx         # Leaflet + OSRM directions
+│   ├── ModelViewer.jsx     # 3D GLB viewer
+│   ├── PanoramaViewer.jsx  # 360° viewer
+│   └── PlaceDetailPage.jsx
+└── assets/
+├── gomatesh.glb
+├── Chaturmukha2.glb
+└── low_poly_planet_earth.glb
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yashas35-raze/Trips.git
+cd Trips
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Add Firebase config
+
+Create a `.env` file in the root:
+
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+### 4. Run locally
+
+```bash
+npm run dev
+```
+
+---
+
+## 🗺️ How Key Features Work
+
+**3D Earth Globe** — Three.js WebGLRenderer renders a low-poly Earth GLB model with a 10,000-particle starfield. requestAnimationFrame rotates both at different speeds for a parallax depth effect.
+
+**Real-Time Favorites** — Each user has a Firestore document at `users/{uid}`. Firestore's `onSnapshot` pushes changes to the UI instantly. `arrayUnion` and `arrayRemove` handle adds and removals atomically.
+
+**Route Directions** — Browser Geolocation API fetches the user's GPS coordinates. These are sent to the OSRM API which returns a GeoJSON polyline drawn on the Leaflet map.
+
+---
+
+## 🔮 Future Improvements
+
+- Move place data from `data.js` to Firestore for dynamic content management
+- Add lazy loading for the Three.js bundle to reduce initial load size
+- Add Firestore security rules for production
+- Write unit tests with React Testing Library
+
+---
+
+## 👤 Author
+
+**Yashas**
+- GitHub: [@yashas35-raze](https://github.com/yashas35-raze)
