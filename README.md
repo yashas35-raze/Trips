@@ -38,33 +38,7 @@ TripVIEW is a React-based travel guide that brings Coastal Karnataka to life thr
 
 ---
 
-## 📁 Project Structure
-trip/
-├── index.html
-├── vite.config.js
-├── public/
-│   └── images/             # Static place photos
-└── src/
-├── main.jsx            # App entry point
-├── App.jsx             # Routes + AuthProvider
-├── firebase.js         # Firebase config
-├── data.js             # Places, beaches, hotels data
-├── styles.css          # Global styles
-├── context/
-│   └── AuthContext.jsx
-├── components/
-│   ├── LandingPage.jsx
-│   ├── Landing3D.jsx       # Three.js Earth + starfield
-│   ├── AuthModal.jsx
-│   ├── MapView.jsx         # Leaflet + OSRM directions
-│   ├── ModelViewer.jsx     # 3D GLB viewer
-│   ├── PanoramaViewer.jsx  # 360° viewer
-│   └── PlaceDetailPage.jsx
-└── assets/
-├── gomatesh.glb
-├── Chaturmukha2.glb
-└── low_poly_planet_earth.glb
----
+
 
 ## ⚙️ Getting Started
 
